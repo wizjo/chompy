@@ -23,6 +23,7 @@
 
   <body>
     <h2>Chompy to <span class="inf">&#x221e;</h2>
+    <a href="https://github.com/wizjo/chompy" style="text-decoration:none;color:#4183c4">Github Repo</a>
       <div class="pyramid">
         <span class="chompy-row" data-row-number="0" style="width:25px;">&nbsp;</span>
         <span class="chompy-row" data-row-number="1" style="width:50px;">&nbsp;</span>
@@ -53,6 +54,11 @@
 
     // Check pyramid height on window resize
     $(window).resize(function() {
+      moarChompys();
+    });
+
+    // Check pyramid height on window scroll
+    $(window).scroll(function() {
       moarChompys();
     });
   </script>
