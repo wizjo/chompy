@@ -1,7 +1,7 @@
 chompy
 ======
 
-### Create pyramid of chopy's
+### Create pyramid of chompy's
 
 It does something like this, and it grows as far as your browser height does. CHOMPYS TO INFINITY!!!
 
