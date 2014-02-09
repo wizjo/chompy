@@ -1,0 +1,59 @@
+<!DOCTYPE HTML>
+<html>
+  <head>
+    <title>Chompy &#x221e;</title>
+    <meta content="text/html; charset=UTF-8">
+    <script type="text/javascript" src="lib/jquery-1.11.0.min.js"></script>
+  </head>
+
+  <style>
+    body {
+      font-family: "Helvetica Neue", sans-serif;
+      color: #555;
+    }
+    .inf {
+      font-size: 180%;
+    }
+    .chompy-row {
+      display: block;
+      background-image: url('images/chompy.gif');
+      margin-bottom: 2px;
+    }
+  </style>
+
+  <body>
+    <h2>Chompy to <span class="inf">&#x221e;</h2>
+      <div class="pyramid">
+        <span class="chompy-row" data-row-number="0" style="width:25px;">&nbsp;</span>
+        <span class="chompy-row" data-row-number="1" style="width:50px;">&nbsp;</span>
+        <span class="chompy-row" data-row-number="2" style="width:75px;">&nbsp;</span>
+        <span class="chompy-row" data-row-number="3" style="width:100px;">&nbsp;</span>
+        <span class="chompy-row" data-row-number="4" style="width:125px;">&nbsp;</span>
+      </div>
+  </body>
+  
+  <script>
+    moarChompys = function() {
+      var currentRows = $('.chompy-row:last-child').data('row-number')
+        , rowsToAdd = Math.ceil((window.innerHeight - currentRows * 27) / 27);
+      
+      if(rowsToAdd == 0) { return } 
+      
+      var $pyramid = $('.pyramid');
+      for(var i=1; i< rowsToAdd; i++) {
+        $pyramid.append('<span class="chompy-row" data-row-number="' + (i + currentRows) + 
+          '" style="width:' + (i + currentRows) * 25 + 'px;">&nbsp;</span>');
+      }
+    }
+
+    // Check pyramid height right on document load
+    $(function() {
+      moarChompys();
+    });
+
+    // Check pyramid height on window resize
+    $(window).resize(function() {
+      moarChompys();
+    });
+  </script>
+</html>
