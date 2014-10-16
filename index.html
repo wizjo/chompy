@@ -38,14 +38,22 @@
       var currentRows = $('.chompy-row:last-child').data('row-number')
         , rowsToAdd = Math.ceil((window.innerHeight - currentRows * 27) / 27);
       
-      if(rowsToAdd == 0) { return } 
       
-      var $pyramid = $('.pyramid');
-      for(var i=1; i< rowsToAdd; i++) {
-        $pyramid.append('<span class="chompy-row" data-row-number="' + (i + currentRows) + 
-          '" style="width:' + (i + currentRows) * 25 + 'px;">&nbsp;</span>');
+      if(rowsToAdd <= 0) {
+        // check if there's enough horizontal space
+        if(window.innerWidth - 40 > (currentRows + 1) * 25) {
+          rowsToAdd = 1;
+        } else {
+          return;
+        }
       }
-    }
+
+      var $pyramid = $('.pyramid');
+      for(var i=1; i <= rowsToAdd; i++) {
+        $pyramid.append('<span class="chompy-row" data-row-number="' + (i + currentRows) + 
+          '" style="width:' + (i + 1 + currentRows) * 25 + 'px;">&nbsp;</span>');
+      }
+    };
 
     // Check pyramid height right on document load
     $(function() {
